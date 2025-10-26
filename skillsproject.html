@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skills & Projects - Al Qwaridzmi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Base Styles: Define Inter font and clean background */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9f9f9; 
+        }
+        
+        /* SVG Aesthetic Style: Floating Card Effect with smooth transition */
+        .svg-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .svg-card:hover {
+            transform: translateY(-4px); /* Subtle lift */
+            /* Enhanced, softer shadow */
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        /* Navigation Style: Base rounded pill button */
+        .nav-link {
+            transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+            padding: 8px 16px; /* px-4 py-2 */
+            border-radius: 12px; /* rounded-xl */
+        }
+
+        /* Navigation Style: Active page indicator (Gold Gradient) */
+        .nav-link.active {
+            background-image: linear-gradient(to right bottom, var(--tw-gradient-stops));
+            --tw-gradient-from: #fcd34d; /* amber-400 */
+            --tw-gradient-to: #d97706;   /* amber-600 */
+            color: #1f2937; /* gray-900 */
+            font-weight: 600; /* font-semibold */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.06);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <header class="bg-gradient-to-b from-gray-900 to-gray-800 text-white shadow-lg sticky top-0 z-10">
+        <div class="container mx-auto px-6 py-5 flex flex-col md:flex-row justify-between items-center">
+            <h1 class="text-2xl font-light tracking-widest">Al Qwaridzmi's Portfolio</h1>
+            <nav class="mt-4 md:mt-0">
+                <ul class="flex space-x-3">
+                    <li><a href="index.html" class="nav-link text-white hover:bg-gray-700/50 hover:text-amber-300">Home</a></li>
+                    <li><a href="about.html" class="nav-link text-white hover:bg-gray-700/50 hover:text-amber-300">About Me</a></li>
+                    <li><a href="skills.html" class="nav-link active">Skills & Projects</a></li>
+                    <li><a href="contact.html" class="nav-link text-white hover:bg-gray-700/50 hover:text-amber-300">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-16 flex-grow">
+        <div class="svg-card bg-gradient-to-br from-white to-gray-50 p-10 md:p-16 rounded-3xl shadow-xl ring-1 ring-gray-100">
+            
+            <h2 class="text-4xl font-extrabold text-gray-800 mb-10 border-b pb-3">Technical Skills & Expertise</h2>
+
+            <section class="mb-12">
+                <h3 class="text-3xl font-light text-amber-500 mb-4">Core Technical Skills (Table)</h3>
+                
+                <div class="overflow-x-auto rounded-lg shadow-md border border-gray-200">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-800 text-amber-400">
+                            <tr>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Skill</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Level</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Years of Experience</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200">
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">HTML5 & CSS3</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Expert</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">6 Years</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">JavaScript (ES6+)</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Master</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">10 Years</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Python (Django/Flask)</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Intermediate</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">1 Year</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Database (SQL/NoSQL)</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Intermediate</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">1.5 Years</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="mb-12">
+                <h3 class="text-3xl font-light text-amber-500 mb-4">Software & Tools Expertise (List)</h3>
+                <p class="text-gray-700 mb-4">I utilize the following software and tools to manage and develop projects:</p>
+                <ul class="list-disc list-outside space-y-2 pl-6 text-gray-700">
+                    <li class="p-2 border-b border-gray-100 hover:bg-amber-50 rounded-md transition duration-150">
+                        <strong>Adobe Dreamweaver</strong>: Primary HTML/CSS/JS development environment.
+                    </li>
+                    <li class="p-2 border-b border-gray-100 hover:bg-amber-50 rounded-md transition duration-150">
+                        <strong>Visual Studio Code (VS Code)</strong>: Versatile code editor for modern development.
+                    </li>
+                    <li class="p-2 border-b border-gray-100 hover:bg-amber-50 rounded-md transition duration-150">
+                        <strong>Git & GitHub</strong>: Version control and collaboration.
+                    </li>
+                    <li class="p-2 border-b border-gray-100 hover:bg-amber-50 rounded-md transition duration-150">
+                        <strong>Figma</strong>: UX/UI design and prototyping.
+                    </li>
+                    <li class="p-2 border-b border-gray-100 hover:bg-amber-50 rounded-md transition duration-150">
+                        <strong>Docker</strong>: Containerization for deployment consistency.
+                    </li>
+                </ul>
+            </section>
+
+        </div>
+    </main>
+
+    <footer class="bg-gradient-to-t from-gray-900 to-gray-800 text-white text-center p-6 mt-12">
+        <p class="text-sm font-light">&copy; 2024 Al Qwaridzmi Portfolio. All rights reserved. | Built with HTML & Tailwind CSS.</p>
+    </footer>
+
+</body>
+</html>

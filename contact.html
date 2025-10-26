@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Al Qwaridzmi</title>
+    <!-- Load Tailwind CSS vi`a CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Base Styles: Define Inter font and clean background */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9f9f9; 
+        }
+        
+        /* SVG Aesthetic Style: Floating Card Effect with smooth transition */
+        .svg-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .svg-card:hover {
+            transform: translateY(-4px); /* Subtle lift */
+            /* Enhanced, softer shadow */
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        /* Navigation Style: Base rounded pill button */
+        .nav-link {
+            transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+            padding: 8px 16px; /* px-4 py-2 */
+            border-radius: 12px; /* rounded-xl */
+        }
+
+        /* Navigation Style: Active page indicator (Gold Gradient) */
+        .nav-link.active {
+            background-image: linear-gradient(to right bottom, var(--tw-gradient-stops));
+            --tw-gradient-from: #fcd34d; /* amber-400 */
+            --tw-gradient-to: #d97706;   /* amber-600 */
+            color: #1f2937; /* gray-900 */
+            font-weight: 600; /* font-semibold */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.06);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <!-- HEADER: Sleek, dark tone with gradient -->
+    <header class="bg-gradient-to-b from-gray-900 to-gray-800 text-white shadow-lg sticky top-0 z-10">
+        <div class="container mx-auto px-6 py-5 flex flex-col md:flex-row justify-between items-center">
+            <h1 class="text-2xl font-light tracking-widest">Al Qwaridzmi's Portfolio</h1>
+            <!-- Navigation Links -->
+            <nav class="mt-4 md:mt-0">
+                <ul class="flex space-x-3">
+                    <!-- Links use href attribute for multi-file navigation -->
+                    <li><a href="index.html" class="nav-link text-white hover:bg-gray-700/50 hover:text-amber-300">Home</a></li>
+                    <li><a href="about.html" class="nav-link text-white hover:bg-gray-700/50 hover:text-amber-300">About Me</a></li>
+                    <li><a href="skills.html" class="nav-link text-white hover:bg-gray-700/50 hover:text-amber-300">Skills & Projects</a></li>
+                    <!-- Current Page: Active (Gold Gradient) -->
+                    <li><a href="contact.html" class="nav-link active">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main class="container mx-auto px-4 py-16 flex-grow">
+        <!-- SVG CARD: Floating Card Effect -->
+        <div class="svg-card bg-gradient-to-br from-white to-gray-50 p-8 md:p-12 rounded-3xl shadow-xl ring-1 ring-gray-100 max-w-4xl mx-auto">
+            <h2 class="text-4xl font-extrabold text-gray-800 mb-8 border-b pb-3 text-center">Get In Touch</h2>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+                <!-- 1. Contact Form Section -->
+                <div>
+                    <h3 class="text-2xl font-light text-amber-500 mb-4">Send a Message</h3>
+                    
+                    <!-- HTML Form Structure -->
+                    <form action="#" method="POST" class="space-y-4">
+                        
+                        <!-- Text Field: Full Name -->
+                        <div>
+                            <label for="full_name" class="block text-sm font-medium text-gray-700 mb-1">Full Name *</label>
+                            <input type="text" id="full_name" name="full_name" required
+                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-amber-500 focus:border-amber-500 transition duration-150">
+                        </div>
+                        
+                        <!-- Text Field: Email -->
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email *</label>
+                            <input type="email" id="email" name="email" required
+                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-amber-500 focus:border-amber-500 transition duration-150">
+                        </div>
+
+                        <!-- Dropdown List Requirement (Inquiry Type) -->
+                        <div>
+                            <label for="inquiry_type" class="block text-sm font-medium text-gray-700 mb-1">Inquiry Type *</label>
+                            <select id="inquiry_type" name="inquiry_type" required
+                                class="w-full px-4 py-2 border border-gray-300 rounded-lg bg-white focus:ring-amber-500 focus:border-amber-500 transition duration-150">
+                                <option value="">-- Select Type of Inquiry --</option>
+                                <option value="project">New Project Proposal</option>
+                                <option value="feedback">General Feedback</option>
+                                <option value="job">Job/Internship Inquiry</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <!-- Text Field: Subject -->
+                        <div>
+                            <label for="subject" class="block text-sm font-medium text-gray-700 mb-1">Subject</label>
+                            <input type="text" id="subject" name="subject"
+                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-amber-500 focus:border-amber-500 transition duration-150">
+                        </div>
+
+                        <!-- Radio Buttons Requirement (Preferred Contact Option) -->
+                        <div class="pt-2">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Preferred Contact Option:</label>
+                            <div class="flex items-center space-x-6">
+                                <!-- All radio buttons in this group share the same name="contact_option" -->
+                                <div class="flex items-center">
+                                    <input type="radio" id="email_pref" name="contact_option" value="email" required
+                                        class="h-4 w-4 text-amber-600 border-gray-300 focus:ring-amber-500">
+                                    <label for="email_pref" class="ml-2 text-sm text-gray-700">Email</label>
+                                </div>
+                                <div class="flex items-center">
+                                    <input type="radio" id="phone_pref" name="contact_option" value="phone"
+                                        class="h-4 w-4 text-amber-600 border-gray-300 focus:ring-amber-500">
+                                    <label for="phone_pref" class="ml-2 text-sm text-gray-700">Phone Call</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Text Area Field: Message -->
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Message *</label>
+                            <textarea id="message" name="message" rows="4" required
+                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-amber-500 focus:border-amber-500 transition duration-150"></textarea>
+                        </div>
+
+                        <!-- Submit and Reset Buttons Requirement -->
+                        <div class="flex justify-start space-x-4 pt-4">
+                            <button type="submit" 
+                                class="px-6 py-2 bg-gradient-to-br from-amber-400 to-amber-600 text-gray-900 font-semibold rounded-lg shadow-md hover:from-amber-500 hover:to-amber-700 transition duration-200">
+                                Submit
+                            </button>
+                            <button type="reset" 
+                                class="px-6 py-2 bg-gray-300 text-gray-800 font-semibold rounded-lg shadow-md hover:bg-gray-400 transition duration-200">
+                                Reset
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- 2. Contact Details Section -->
+                <div class="lg:pt-10">
+                    <h3 class="text-2xl font-light text-amber-500 mb-4">My Contact Details</h3>
+                    <div class="space-y-4 text-gray-700">
+                        <p>
+                            <strong class="font-medium text-gray-800">Email:</strong><br>
+                            al.qwaridzmi.dev@example.com
+                        </p>
+                        <p>
+                            <strong class="font-medium text-gray-800">Phone:</strong><br>
+                            (6) 000-000
+                        </p>
+                        <p>
+                            <strong class="font-medium text-gray-800">Address:</strong><br>
+                            K271 Kajil Solutions, <br>
+                            Ohio, United States 42069
+                        </p>
+                        <p class="pt-4 text-sm italic text-gray-500">
+                            I generally respond to emails within 6-7 hours.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER: Sleek, dark tone with gradient -->
+    <footer class="bg-gradient-to-t from-gray-900 to-gray-800 text-white text-center p-6 mt-12">
+        <p class="text-sm font-light">&copy; 2024 Al Qwaridzmi Portfolio. All rights reserved. | Built with HTML & Tailwind CSS.</p>
+    </footer>
+
+</body>
+</html>

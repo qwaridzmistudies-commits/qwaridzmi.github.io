@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <style>
+    .nav {
+      list-style: none;
+      display: flex;
+      gap: 15px;
+      background-color : #007bff;
+      padding: 5px;
+    }
+    
+    .nav li {
+      color:white;
+      cursor: pointer;
+    }
+   </style>
+   
+   <style>
+body {
+  background-color: gray; /* Tomato color background */
+  color: #333; /* Dark gray text */
+}
+
+h1 {
+  color: #0066cc; /* Blue heading */
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+.button {
+  background-color: hsl(120, 100%, 30%); /* Green button */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+}
+</style>
+
+  <style>
+.simple-table {
+  width: 100%;
+  margin: 20px auto;
+  border-collapse: collapse;
+  font-family: Arial, sans-serif;
+}
+
+.simple-table th,
+.simple-table td {
+  padding: 12px;
+  text-align: left;
+  border: 1px solid #333;
+  text-align: center;
+  text-shadow: 1px 1px 2px black;
+}
+
+.simple-table th {
+  background-color: #002bff;
+  color: white;
+}
+
+.simple-table tr:nth-child(even) {
+  background-color: cyan ;
+}
+
+.simple-table tr:hover {
+  background-color: #007bff;
+}
+</style>
+   </head>
+  
+   <body>
+  </head>
+  
+  <body>
+      <h1 class="title">Styling List With Colors </h1>
+      
+      <ul class="nav">
+        <li>Home</li>
+        <li>About</li>
+        <li>Services</li>
+        <li>Contact</li>
+      </ul>
+      
+  
+  </body>
+<table class="simple-table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Age</th>
+      <th>City</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Leo</td>
+      <td>30</td>
+      <td>York New</td>
+    </tr>
+    <tr>
+      <td>Max Verstappen</td>
+      <td>50</td>
+      <td>Kajil</td>
+    </tr>
+    <tr>
+      <td>Jay</td>
+      <td>10</td>
+      <td>Parus</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+<button class="button"> Click Here To Get RM900000</button>
+</html>

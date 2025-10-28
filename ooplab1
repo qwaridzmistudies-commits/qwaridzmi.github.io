@@ -1,0 +1,250 @@
+import java.util.*;
+
+// =============================
+// Base Class: Student
+// =============================
+class Student {
+    protected String name;
+    protected String studentID;
+    protected double cgpa;
+    protected String scholarshipStatus;
+
+    public Student(String name, String studentID, double cgpa) {
+        this.name = name;
+        this.studentID = studentID;
+        this.cgpa = cgpa;
+        this.scholarshipStatus = "None";
+    }
+
+    public void setScholarshipStatus(String status) {
+        this.scholarshipStatus = status;
+    }
+
+    public void removeScholarshipStatus() {
+        this.scholarshipStatus = "None";
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void display() {
+        System.out.println("----------------------------------");
+        System.out.println("Name: " + name);
+        System.out.println("Matric Number: " + studentID);
+        System.out.printf("CGPA: %.2f%n", cgpa);
+        System.out.println("Scholarship/Loan: " + scholarshipStatus);
+    }
+}
+
+// =============================
+// Subclass: FinalYearStudent
+// =============================
+class FinalYearStudent extends Student {
+    private String projectTitle;
+    private String supervisor;
+
+    public FinalYearStudent(String name, String studentID, double cgpa, String projectTitle, String supervisor) {
+        super(name, studentID, cgpa);
+        this.projectTitle = projectTitle;
+        this.supervisor = supervisor;
+    }
+
+    @Override
+    public void display() {
+        super.display();
+        System.out.println("FYP Title: " + projectTitle);
+        System.out.println("Supervisor: " + supervisor);
+    }
+}
+
+// =============================
+// Subclass: InternshipStudent (inherits FinalYearStudent)
+// =============================
+class InternshipStudent extends FinalYearStudent {
+    private String companyName;
+    private int duration; // in weeks
+    private double allowance;
+
+    public InternshipStudent(String name, String studentID, double cgpa, String projectTitle, String supervisor,
+                             String companyName, int duration, double allowance) {
+        super(name, studentID, cgpa, projectTitle, supervisor);
+        this.companyName = companyName;
+        this.duration = duration;
+        this.allowance = allowance;
+    }
+
+    @Override
+    public void display() {
+        super.display();
+        System.out.println("Internship Company: " + companyName);
+        System.out.println("Duration: " + duration + " weeks");
+        System.out.println("Allowance: RM " + allowance);
+    }
+}
+
+// =============================
+// Subclass: StudentScholarship (inherits Student)
+// =============================
+class StudentScholarship extends Student {
+    private String sponsorName;
+    private double amount;
+
+    public StudentScholarship(String name, String studentID, double cgpa, String sponsorName, double amount) {
+        super(name, studentID, cgpa);
+        this.sponsorName = sponsorName;
+        this.amount = amount;
+    }
+
+    @Override
+    public void display() {
+        super.display();
+        System.out.println("Scholarship Sponsor: " + sponsorName);
+        System.out.println("Scholarship Amount: RM " + amount);
+    }
+}
+
+// =============================
+// Main Class with Menu
+// =============================
+public class Main {
+    private static final Scanner scanner = new Scanner(System.in);
+    private static final List<Student> studentList = new ArrayList<>();
+
+    private static double getDouble(String prompt) {
+        while (true) {
+            System.out.print(prompt);
+            if (scanner.hasNextDouble()) {
+                double val = scanner.nextDouble();
+                scanner.nextLine();
+                return val;
+            } else {
+                System.out.println("Invalid input. Please enter a number.");
+                scanner.nextLine();
+            }
+        }
+    }
+
+    private static int getInt(String prompt) {
+        while (true) {
+            System.out.print(prompt);
+            if (scanner.hasNextInt()) {
+                int val = scanner.nextInt();
+                scanner.nextLine();
+                return val;
+            } else {
+                System.out.println("Invalid input. Please enter a number.");
+                scanner.nextLine();
+            }
+        }
+    }
+
+    private static void addStudent() {
+        System.out.print("Enter Name: ");
+        String name = scanner.nextLine();
+        System.out.print("Enter Matric Number: ");
+        String id = scanner.nextLine();
+        double cgpa = getDouble("Enter CGPA: ");
+        studentList.add(new Student(name, id, cgpa));
+        System.out.println("Student added successfully.");
+    }
+
+    private static void addFYPStudent() {
+        System.out.print("Enter Name: ");
+        String name = scanner.nextLine();
+        System.out.print("Enter Matric Number: ");
+        String id = scanner.nextLine();
+        double cgpa = getDouble("Enter CGPA: ");
+        System.out.print("Enter Project Title: ");
+        String title = scanner.nextLine();
+        System.out.print("Enter Supervisor Name: ");
+        String supervisor = scanner.nextLine();
+        studentList.add(new FinalYearStudent(name, id, cgpa, title, supervisor));
+        System.out.println("Final Year Student added successfully.");
+    }
+
+    private static void addScholarship() {
+        System.out.print("Enter Student Name to Add/Update Scholarship: ");
+        String name = scanner.nextLine();
+        for (Student s : studentList) {
+            if (s.getName().equalsIgnoreCase(name)) {
+                System.out.print("Enter Scholarship/Loan Name (e.g., JPA or PTPTN): ");
+                String status = scanner.nextLine();
+                s.setScholarshipStatus(status);
+                System.out.println("Scholarship updated for " + s.getName());
+                return;
+            }
+        }
+        System.out.println("Student not found.");
+    }
+
+    private static void removeScholarship() {
+        System.out.print("Enter Student Name to Remove Scholarship/Loan: ");
+        String name = scanner.nextLine();
+        for (Student s : studentList) {
+            if (s.getName().equalsIgnoreCase(name)) {
+                s.removeScholarshipStatus();
+                System.out.println("Scholarship removed for " + s.getName());
+                return;
+            }
+        }
+        System.out.println("Student not found.");
+    }
+
+    private static void addInternship() {
+        System.out.print("Enter Name: ");
+        String name = scanner.nextLine();
+        System.out.print("Enter Matric Number: ");
+        String id = scanner.nextLine();
+        double cgpa = getDouble("Enter CGPA: ");
+        System.out.print("Enter FYP Title: ");
+        String title = scanner.nextLine();
+        System.out.print("Enter Supervisor Name: ");
+        String supervisor = scanner.nextLine();
+        System.out.print("Enter Company Name: ");
+        String company = scanner.nextLine();
+        int duration = getInt("Enter Internship Duration (weeks): ");
+        double allowance = getDouble("Enter Allowance (RM): ");
+        studentList.add(new InternshipStudent(name, id, cgpa, title, supervisor, company, duration, allowance));
+        System.out.println("Internship Student added successfully.");
+    }
+
+    private static void displayAll() {
+        if (studentList.isEmpty()) {
+            System.out.println("No students available.");
+            return;
+        }
+        System.out.println("\n===== STUDENT LIST =====");
+        for (Student s : studentList) {
+            s.display();
+            System.out.println();
+        }
+    }
+
+    public static void main(String[] args) {
+        int choice;
+        do {
+            System.out.println("\n========== MENU ==========");
+            System.out.println("1. Add Normal Student");
+            System.out.println("2. Add Final Year Student");
+            System.out.println("3. Add/Update Scholarship or Loan");
+            System.out.println("4. Add Internship Student");
+            System.out.println("5. Display All Students");
+            System.out.println("6. Remove Scholarship/Loan");
+            System.out.println("7. Exit");
+            System.out.print("Enter choice: ");
+            choice = getInt("");
+
+            switch (choice) {
+                case 1 -> addStudent();
+                case 2 -> addFYPStudent();
+                case 3 -> addScholarship();
+                case 4 -> addInternship();
+                case 5 -> displayAll();
+                case 6 -> removeScholarship();
+                case 7 -> System.out.println("Exiting program...");
+                default -> System.out.println("Invalid choice.");
+            }
+        } while (choice != 7);
+    }
+}

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <title>JavaScript Event & Alert Example</title>
+ <style>
+ body {
+ font-family: Arial, sans-serif;
+ padding: 30px;
+ text-align: center;
+ }
+ button, select, input {
+ margin: 10px;
+ padding: 10px;
+ font-size: 16px;
+ }
+ #message, #typing, #selection {
+ margin-top: 15px;
+ font-size: 18px;
+ color: green;
+ }
+ h1 {
+ transition: color 0.3s;
+ }
+ 
+ 
+ body.dark {
+   background: tomato;
+   color: white;
+ }
+ </style>
+</head>
+<body>
+ <h1 onmouseover="hoverTitle(this)" onmouseout="resetTitle(this)">Welcome to
+ Agartha</h1>
+ <button onclick="showMessage()">Tekan woi!</button>
+ <div id="message"></div>
+ <hr>
+ <label for="colorSelect">Tukor warne woi:</label>
+ <select id="colorSelect" onchange="showSelectedColor()">
+ <option value="">--Select--</option>
+ <option value="Red">Meroh</option>
+ <option value="Blue">Blu</option>
+ <option value="Green">Ijau</option>
+ </select>
+ <div id="selection"></div>
+ <hr>
+ 
+ <label for="typingBox">Tulis woi:</label><br>
+ <input type="text" id="typingBox" oninput="checkTyping(event)">
+ <div id="typing"></div>
+ 
+ <hr> 
+ 
+ <button id="theme-toggle">Kebersamaan</button>
+ 
+ <script>
+ function showMessage() {
+ document.getElementById("message").innerText = "Button clicked!";
+ alert("You clicked the button!");
+ }
+ function hoverTitle(element) {
+ element.style.color = "blue";
+ element.innerText = "Tengok mende woi!";
+ }
+ function resetTitle(element) {
+ element.style.color = "black";
+ element.innerText = "Welcome to My Website";
+ }
+ function showSelectedColor() {
+ let color = document.getElementById("colorSelect").value;
+ if (color) {
+ document.getElementById("selection").innerText = "You selected: " + color;
+ alert("You selected: " + color);
+ } else {
+ document.getElementById("selection").innerText = "";
+ }
+ }
+ function checkTyping(event) {
+ let text = document.getElementById("typingBox").value;
+ document.getElementById("typing").innerText = "Typing: " + text;
+ if (event.key === "Enter" && text.toLowerCase().trim() === "hello") {
+ alert("Hello to you too!");
+ }
+ }
+ 
+ // tambahan
+ const toggle = document.getElementById('theme-toggle');
+ 
+ toggle.addEventListener('click', () => {
+ document.body.classList.toggle('dark');
+ });
+ 
+ </script>
+</body>
+</html>
